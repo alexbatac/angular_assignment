@@ -1,0 +1,22 @@
+<div class="weather-container" *ngIf="weatherData.length > 0; else errorBlock">
+  <h2>Weather Forecast for {{ city }} during the Family Camp (April 9–10, 2025)</h2>
+
+  <div class="forecast-wrapper">
+    <div *ngFor="let day of weatherData" class="forecast-card">
+      <p><strong>Date:</strong> {{ day.dt_txt | date: 'fullDate' }}</p>
+      <p><strong>Temperature:</strong> {{ day.main.temp | number: '1.0-1' }} °C</p>
+      <p><strong>Condition:</strong> {{ day.weather[0].description }}</p>
+      <img
+        *ngIf="day.weather[0].icon"
+        [src]="'https://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png'"
+        [alt]="day.weather[0].description"
+      />
+    </div>
+  </div>
+</div>
+
+<ng-template #errorBlock>
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+</ng-template>

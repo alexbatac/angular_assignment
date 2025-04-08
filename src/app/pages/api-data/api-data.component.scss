@@ -1,0 +1,32 @@
+.weather-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .forecast-wrapper {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .forecast-card {
+    background-color: #eef4fb;
+    border-radius: 16px;
+    padding: 1rem;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .forecast-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .forecast-card img {
+    height: 80px;
+    margin-top: 0.5rem;
+  }
+  

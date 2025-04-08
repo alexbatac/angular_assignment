@@ -1,0 +1,112 @@
+<h2>Family Camp Registration Form</h2>
+
+<!-- FORM STEP -->
+<div *ngIf="!showConfirmation">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+    <div>
+      <label>First Name *</label>
+      <input type="text" formControlName="firstName" />
+      <div *ngIf="form.get('firstName')?.touched && form.get('firstName')?.invalid" class="error-message">
+        First Name is required.
+      </div>
+    </div>
+
+    <div>
+      <label>Last Name *</label>
+      <input type="text" formControlName="lastName" />
+      <div *ngIf="form.get('lastName')?.touched && form.get('lastName')?.invalid" class="error-message">
+        Last Name is required.
+      </div>
+    </div>
+
+    <div>
+      <label>Email Address *</label>
+      <input type="email" formControlName="email" />
+      <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid" class="error-message">
+        Enter a valid email address.
+      </div>
+    </div>
+
+    <div>
+      <label>Contact Number *</label>
+      <input type="text" formControlName="contactNumber" />
+      <div *ngIf="form.get('contactNumber')?.touched && form.get('contactNumber')?.invalid" class="error-message">
+        Enter a valid contact number.
+      </div>
+    </div>
+
+    <fieldset formGroupName="group">
+      <legend>Number of Persons in Group *</legend>
+
+      <div>
+        <label>12 and below:</label>
+        <input type="number" formControlName="under12" min="0" step="1" inputmode="numeric" />
+        <div *ngIf="form.get('group.under12')?.touched && form.get('group.under12')?.invalid" class="error-message">
+          <span *ngIf="form.get('group.under12')?.errors?.['required']">Required.</span>
+          <span *ngIf="form.get('group.under12')?.errors?.['pattern']">Must be a whole number.</span>
+          <span *ngIf="form.get('group.under12')?.errors?.['min']">Must be 0 or more.</span>
+        </div>
+      </div>
+
+      <div>
+        <label>13 - 18:</label>
+        <input type="number" formControlName="teens" min="0" step="1" inputmode="numeric" />
+        <div *ngIf="form.get('group.teens')?.touched && form.get('group.teens')?.invalid" class="error-message">
+          <span *ngIf="form.get('group.teens')?.errors?.['required']">Required.</span>
+          <span *ngIf="form.get('group.teens')?.errors?.['pattern']">Must be a whole number.</span>
+          <span *ngIf="form.get('group.teens')?.errors?.['min']">Must be 0 or more.</span>
+        </div>
+      </div>
+
+      <div>
+        <label>Adults:</label>
+        <input type="number" formControlName="adults" min="0" step="1" inputmode="numeric" />
+        <div *ngIf="form.get('group.adults')?.touched && form.get('group.adults')?.invalid" class="error-message">
+          <span *ngIf="form.get('group.adults')?.errors?.['required']">Required.</span>
+          <span *ngIf="form.get('group.adults')?.errors?.['pattern']">Must be a whole number.</span>
+          <span *ngIf="form.get('group.adults')?.errors?.['min']">Must be 0 or more.</span>
+        </div>
+      </div>
+    </fieldset>
+
+    <div>
+      <label>Program *</label>
+      <select formControlName="program">
+        <option value="">-- Select Program --</option>
+        <option *ngFor="let p of programs" [value]="p">{{ p }}</option>
+      </select>
+      <div *ngIf="form.get('program')?.touched && form.get('program')?.invalid" class="error-message">
+        Please select a program.
+      </div>
+    </div>
+
+    <div>
+      <label>Remarks / Additional Info:</label>
+      <textarea formControlName="remarks" rows="4"></textarea>
+    </div>
+
+    <button type="button" (click)="confirmSubmit()">Continue</button>
+
+  </form>
+</div>
+
+<!-- CONFIRMATION PAGE -->
+<div *ngIf="showConfirmation" class="form-container">
+  <h3>Please confirm your details:</h3>
+  <ul>
+    <li><strong>First Name:</strong> {{ form.value.firstName }}</li>
+    <li><strong>Last Name:</strong> {{ form.value.lastName }}</li>
+    <li><strong>Email:</strong> {{ form.value.email }}</li>
+    <li><strong>Contact Number:</strong> {{ form.value.contactNumber }}</li>
+    <li><strong>Under 12:</strong> {{ form.value.group.under12 }}</li>
+    <li><strong>Teens:</strong> {{ form.value.group.teens }}</li>
+    <li><strong>Adults:</strong> {{ form.value.group.adults }}</li>
+    <li><strong>Program:</strong> {{ form.value.program }}</li>
+    <li><strong>Remarks:</strong> {{ form.value.remarks || '-' }}</li>
+  </ul>
+
+  <div class="button-group">
+    <button type="button" (click)="editForm()" style="margin-right: 1rem;">Back</button>
+    <button type="button" (click)="onSubmit()">Confirm & Submit</button>
+  </div>
+</div>

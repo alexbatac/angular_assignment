@@ -1,0 +1,89 @@
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 4px;
+  }
+
+  .form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #34495e;
+  }
+  
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+  
+    &:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+  }
+  
+  fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #fff;
+  
+    legend {
+      font-weight: 600;
+      color: #2c3e50;
+      padding: 0 0.5rem;
+    }
+  
+    div {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  button {
+    background-color: #4379d5;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    gap: 1rem;
+    
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #334acd;
+    }
+  }
+  
+  .error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+  }
+  
+  
